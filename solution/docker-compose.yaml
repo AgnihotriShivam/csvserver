@@ -5,14 +5,14 @@ services:
     image: infracloudio/csvserver:latest
     container_name: csvserver
     ports:
-      - "9393:9300"
+      - "9393:9300"  # csvserver runs on port 9300 internally, mapped to 9393
     environment:
       - CSVSERVER_BORDER=Orange
     volumes:
-      - ./inputdata:/csvserver/inputdata
+      - ./inputFile:/csvserver/inputdata
 
   prometheus:
-    image: prom/prometheus:v2.22.0
+    image: prom/prometheus:v2.45.2
     container_name: prometheus
     ports:
       - "9090:9090"
